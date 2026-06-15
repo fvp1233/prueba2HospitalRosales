@@ -79,13 +79,13 @@ registerPatientController.register = async (req, res) => {
 
     transporter.sendMail(mailOptions, (error) => {
       if (error) {
-        console.log("error" + error);
+        console.log("error" , error);
         return res.status(500).json({ message: "Error sending email" });
       }
       return res.status(200).json({ message: "Email sent" });
     });
   } catch (error) {
-    console.log("error" + error);
+    console.log("error" , error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -108,6 +108,8 @@ registerPatientController.verifyCode = async (req, res) => {
       address,
       phoneEmergencyContacts,
       isVerified,
+      image,
+      public_id,
       loginAttemps,
       timeOut,
     } = decoded;
@@ -116,7 +118,7 @@ registerPatientController.verifyCode = async (req, res) => {
       return res.status(400).json({ message: "Invalid code" });
     }
 
-    const newPatient = patientsModel({
+    const newPatient = new patientsModel({
       name,
       lastName,
       email,
@@ -126,14 +128,14 @@ registerPatientController.verifyCode = async (req, res) => {
       address,
       phoneEmergencyContacts,
       isVerified: true,
-      image: req.file.path,
-      public_id: req.file.filename,
+      image,
+      public_id
     });
     await newPatient.save();
     res.clearCookie("registrationCookie");
     return res.status(200).json({ message: "Patient register" });
   } catch (error) {
-    console.log("error" + error);
+    console.log("error" , error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
