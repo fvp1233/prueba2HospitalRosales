@@ -43,8 +43,6 @@ const patientSchema = new Schema(
     nameEmergencyContact: [
       {
         phone: { type: String },
-      },
-      {
         nameEmergencyContact: { type: String },
       },
     ],
