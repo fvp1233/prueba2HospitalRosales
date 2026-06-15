@@ -6,8 +6,10 @@ import patientsRoutes from "./src/routes/patients.js";
 import loginPatients from "./src/routes/loginPatients.js";
 import logoutRoutes from "./src/routes/logout.js";
 import specialitiesRoutes from "./src/routes/specialities.js";
-import appointmentsRoutes from "./src/routes/appointment.js"
-import clinical_historyRoutes from "./src/routes/clinical_history.js"
+import appointmentsRoutes from "./src/routes/appointment.js";
+import clinical_historyRoutes from "./src/routes/clinical_history.js";
+import equipmentRoutes from "./src/routes/equipment.js";
+import recoveryPassword from "./src/routes/recoveryPassword.js";
 
 const app = express();
 
@@ -32,8 +34,12 @@ app.use("/api/logout", logoutRoutes);
 
 app.use("/api/specialities", specialitiesRoutes);
 
-app.use("/api/appointments", appointmentsRoutes)
+app.use("/api/appointments", appointmentsRoutes);
 
-app.use("/api/clinicalHistory" , clinical_historyRoutes)
+app.use("/api/clinicalHistory", clinical_historyRoutes);
+
+app.use("/api/equipment", equipmentRoutes);
+
+app.use("/api/recoveryPassword", recoveryPassword);
 
 export default app;
