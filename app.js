@@ -7,6 +7,7 @@ import loginPatients from "./src/routes/loginPatients.js";
 import logoutRoutes from "./src/routes/logout.js";
 import specialitiesRoutes from "./src/routes/specialities.js";
 import appointmentsRoutes from "./src/routes/appointment.js"
+import clinical_historyRoutes from "./src/routes/clinical_history.js"
 
 const app = express();
 
@@ -32,5 +33,7 @@ app.use("/api/logout", logoutRoutes);
 app.use("/api/specialities", specialitiesRoutes);
 
 app.use("/api/appointments", appointmentsRoutes)
+
+app.use("/api/clinicalHistory" , clinical_historyRoutes)
 
 export default app;
